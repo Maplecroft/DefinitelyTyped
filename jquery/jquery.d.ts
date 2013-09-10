@@ -39,7 +39,9 @@ interface JQueryAjaxSettings {
     headers?: { [key: string]: any; };
     ifModified?: boolean;
     isLocal?: boolean;
-    jsonp?: string;
+    // According to the documentation [http://api.jquery.com/jQuery.ajax/],
+    // jsonp may be set to a string or false.
+    jsonp?: any;
     jsonpCallback?: any;
     mimeType?: string;
     password?: string;
