@@ -713,7 +713,8 @@ interface JQuery {
     wrapInner(func: (index: any) => any): JQuery;
 
     // Miscellaneous
-    each(func: (index: any, elem: Element) => any): JQuery;
+    // NOTE: $(anArray).each((index, something) => void);
+    each(func: (index: any, obj: any) => any): JQuery;
 
     get(index?: number): any;
 
