@@ -157,6 +157,11 @@ interface CompassError {
     code: number;
 }
 
+declare var CompassError: {
+    COMPASS_INTERNAL_ERR: number;
+    COMPASS_NOT_SUPPORTED: number;
+}
+
 interface Compass {
     getCurrentHeading(compassSuccess: (heading: CompassHeading) => void , compassError: (error: CompassError) => void , compassOptions?: CompassOptions): void;
     watchHeading(compassSuccess: (heading: CompassHeading) => void , compassError: (error: CompassError) => void , compassOptions?: CompassOptions): void;
@@ -238,6 +243,16 @@ interface ContactOrganization {
 
 interface ContactError {
     code: number;
+}
+
+declare var ContactError: {
+    UNKNOWN_ERROR: number;
+    INVALID_ARGUMENT_ERROR: number;
+    TIMEOUT_ERROR: number;
+    PENDING_OPERATION_ERROR: number;
+    IO_ERROR: number;
+    NOT_SUPPORTED_ERROR: number;
+    PERMISSION_DENIED_ERROR: number;
 }
 
 interface Contacts {
@@ -413,6 +428,13 @@ interface GlobalizationError {
     message: string;
 }
 
+declare var GlobalizationError: {
+    UNKNOWN_ERROR: number;
+    FORMATTING_ERROR: number;
+    PARSING_ERROR: number;
+    PATTERN_ERROR: number;
+}
+
 interface Globalization {
     getPreferredLanguage(successCB, errorCB): void;
     getLocaleName(successCB, errorCB): void;
@@ -456,6 +478,7 @@ declare var Media: {
 interface Notification {
     alert(message: string, alertCallback: Function, title?: string, buttonName?: string): void;
     confirm(message: string, confirmCallback: Function, title?: string, buttonLabels?: string): void;
+	confirm(message: string, confirmCallback: Function, title?: string, buttonLabels?: string[]): void;
     beep(times: number): void;
     vibrate(milliseconds: number): void;
 }

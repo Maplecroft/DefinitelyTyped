@@ -1449,7 +1449,7 @@ declare module L {
 
     }
 
-    export class FeatureGroup implements ILayer, IEventPowered {
+    export class FeatureGroup extends LayerGroup implements ILayer, IEventPowered {
         /**
           * Create a layer group, optionally given an initial set of layers.
           */
@@ -1581,7 +1581,7 @@ declare module L {
           * used in GeoJSON for points. If reverse is set to true, the numbers will be interpreted
           * as (longitude, latitude).
           */
-        static coordsToLatlng(coords: Array, reverse?: boolean): LatLng;
+        static coordsToLatlng(coords: number[], reverse?: boolean): LatLng;
 
         /**
           * Creates a multidimensional array of LatLng objects from a GeoJSON coordinates
@@ -1589,7 +1589,7 @@ declare module L {
           * 1 for an array of arrays of points, etc., 0 by default). If reverse is set to
           * true, the numbers will be interpreted as (longitude, latitude).
           */
-        static coordsToLatlngs(coords: Array, levelsDeep?: number, reverse?: boolean): Array;
+        static coordsToLatlngs(coords: number[], levelsDeep?: number, reverse?: boolean): LatLng[];
 
     }
 
@@ -1898,20 +1898,22 @@ declare module L {
 
     }
 
-    interface IconDefaults {
-      imagePath: string;
-    }
-
     export class Icon {
         /**
           * Creates an icon instance with the given options.
           */
         constructor(options: IconOptions);
+    }
 
-        /**
-          * Default properties for newly constructed icons.
-          */
-        public static Default : IconDefaults;
+    export module Icon {
+        export class Default extends Icon {
+            /**
+              * Creates an icon instance with default options.
+              */
+            constructor();
+
+            static imagePath: string;
+        }
     }
 
     export interface DivIconOptions {

@@ -150,14 +150,11 @@ declare module ng {
     interface INgModelController {
         $render(): void;
         $setValidity(validationErrorKey: string, isValid: boolean): void;
-        $setViewValue(value: string): void;
-
-        // XXX Not sure about the types here. Documentation states it's a string, but
-        // I've seen it receiving other types throughout the code.
-        // Falling back to any for now.
+        // Documentation states viewValue and modelValue to be a string but other
+        // types do work and it's common to use them.
+        $setViewValue(value: any): void;
         $viewValue: any;
 
-        // XXX Same as avove
         $modelValue: any;
 
         $parsers: IModelParser[];
@@ -208,10 +205,17 @@ declare module ng {
         $watch(watchExpression: string, listener?: (newValue: any, oldValue: any, scope: IScope) => any, objectEquality?: boolean): Function;
         $watch(watchExpression: (scope: IScope) => any, listener?: string, objectEquality?: boolean): Function;
         $watch(watchExpression: (scope: IScope) => any, listener?: (newValue: any, oldValue: any, scope: IScope) => any, objectEquality?: boolean): Function;
-        
+
+        $watchCollection(watchExpression: string, listener: (newValue: any, oldValue: any, scope: IScope) => any): Function;
+        $watchCollection(watchExpression: (scope: IScope) => any, listener: (newValue: any, oldValue: any, scope: IScope) => any): Function;
+
         $parent: IScope;
 
         $id: number;
+        
+        // Hidden members
+        $$isolateBindings: any;
+        $$phase: any;
     }
 
     interface IAngularEvent {
@@ -497,7 +501,7 @@ declare module ng {
         (controllerName: string, locals?: any): any;
     }
 
-    interface IControlerProvider extends IServiceProvider {
+    interface IControllerProvider extends IServiceProvider {
         register(name: string, controllerConstructor: Function): void;
         register(name: string, dependencyAnnotadedConstructor: any[]): void;
     }
@@ -562,6 +566,7 @@ declare module ng {
 
     interface IHttpProvider extends IServiceProvider {
         defaults: IRequestConfig;
+        interceptors: any[];
         responseInterceptors: any[];
     }
 
@@ -671,6 +676,7 @@ declare module ng {
         scope?: any;
         link?: Function;
         compile?: Function;
+        controller?: Function;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -693,6 +699,10 @@ declare module ng {
     interface IAugmentedJQuery extends JQuery {
         // TODO: events, how to define?
         //$destroy
+
+        find(selector: string): IAugmentedJQuery;
+        find(element: any): IAugmentedJQuery;
+        find(obj: JQuery): IAugmentedJQuery;
 
         controller(name: string): any;
         injector(): any;
