@@ -16,13 +16,27 @@ declare module L {
     (e: IGridEvent): void;
   }
 
-  export class UtfGrid {
+  export class UtfGrid implements IEventPowered {
     constructor(urlTemplate: string, options?: IUtfGridOptions);
 
     onAdd(map: L.Map): void;
     onRemove(): void;
 
-    on(eventType: string, IGridEventCallback): void;
+    ////////////
+    //// IEventPowered members
+    ////////////
+
+    addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): IEventPowered;
+    addEventListener(eventMap: any, context?: any): IEventPowered;
+    removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): IEventPowered;
+    removeEventListener(eventMap: any, context?: any): IEventPowered;
+    hasEventListeners(type: string): boolean;
+    fireEvent(type: string, data?: any): IEventPowered;
+    on(type: string, fn: (e: LeafletEvent) => void, context?: any): IEventPowered;
+    on(eventMap: any, context?: any): IEventPowered;
+    off(type: string, fn?: (e: LeafletEvent) => void, context?: any): IEventPowered;
+    off(eventMap: any, context?: any): IEventPowered;
+    fire(type: string, data?: any): IEventPowered;
   }
 
   export function utfGrid(): UtfGrid;
