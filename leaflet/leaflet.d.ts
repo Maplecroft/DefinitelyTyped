@@ -234,7 +234,7 @@ declare module L {
 
     }
 
-    export class Map implements IEventPowered {
+    export class Map extends Class implements IEventPowered {
         /**
           * Instantiates a map object given a div element (or its id) and optionally an
           * object literal with map options described below.
@@ -1898,7 +1898,7 @@ declare module L {
 
     }
 
-    export class Icon {
+    export class Icon extends Class {
         /**
           * Creates an icon instance with the given options.
           */
@@ -2238,7 +2238,7 @@ declare module L {
 
     }
 
-    export interface LeafletMouseEvent {
+    export interface LeafletMouseEvent extends LeafletEvent {
         /**
           * The geographical point where the mouse event occured.
           */
@@ -2263,7 +2263,7 @@ declare module L {
 
     }
 
-    export interface LeafletLocationEvent {
+    export interface LeafletLocationEvent extends LeafletEvent {
         /**
           * Detected geographical location of the user.
           */
@@ -2282,7 +2282,7 @@ declare module L {
 
     }
 
-    export interface LeafletErrorEvent {
+    export interface LeafletErrorEvent extends LeafletEvent {
         /**
           * Error message.
           */
@@ -2295,7 +2295,7 @@ declare module L {
 
     }
 
-    export interface LeafletLayerEvent {
+    export interface LeafletLayerEvent extends LeafletEvent {
         /**
           * The layer that was added or removed.
           */
@@ -2303,7 +2303,7 @@ declare module L {
 
     }
 
-    export interface LeafletTileEvent {
+    export interface LeafletTileEvent extends LeafletEvent {
         /**
           * The tile element (image).
           */
@@ -2316,7 +2316,7 @@ declare module L {
 
     }
 
-    export interface LeafletGeoJSONEvent {
+    export interface LeafletGeoJSONEvent extends LeafletEvent {
         /**
           * The layer for the GeoJSON feature that is being added to the map.
           */
@@ -2339,7 +2339,7 @@ declare module L {
 
     }
 
-    export interface LeafletPopupEvent {
+    export interface LeafletPopupEvent extends LeafletEvent {
         /**
           * The popup that was opened or closed.
           */
@@ -2348,6 +2348,7 @@ declare module L {
     }
 
     export class Class {
+      static extend(extensions: any): Class;
     }
 
     export class Browser {
