@@ -1,4 +1,4 @@
-﻿DefinitelyTyped [![Build Status](https://travis-ci.org/borisyankov/DefinitelyTyped.png?branch=master)](https://travis-ci.org/borisyankov/DefinitelyTyped)
+DefinitelyTyped [![Build Status](https://travis-ci.org/borisyankov/DefinitelyTyped.png?branch=master)](https://travis-ci.org/borisyankov/DefinitelyTyped)
 ===============
 
 The repository for *high quality* TypeScript type definitions.
@@ -75,8 +75,9 @@ List of Definitions
 * [Giraffe](https://github.com/barc/backbone.giraffe) (by [Matt McCray](https://github.com/darthapo))
 * [glDatePicker](http://glad.github.com/glDatePicker/) (by [Dániel Tar](https://github.com/qcz))
 * [GoJS](http://gojs.net/) (by [Barbara Duckworth](https://github.com/barbara42))
+* [Greasemonkey](http://www.greasespot.net/) (by [Kota Saito](https://github.com/kotas))
 * [GreenSock Animation Platform (GSAP)](http://www.greensock.com/get-started-js/) (by [Robert S.](https://github.com/codeBelt))
-* [Grunt JS](http://gruntjs.com/) (by [Basarat Ali Syed](https://github.com/basarat))
+* [Grunt JS](http://gruntjs.com/) (by [Jeff May](https://github.com/jeffmay) and [Basarat Ali Syed](https://github.com/basarat))
 * [Google API Client](https://code.google.com/p/google-api-javascript-client/) (by [Frank M](https://github.com/sgtfrankieboy))
 * [Google App Engine Channel API](https://developers.google.com/appengine/docs/java/channel/javascript) (by [vvakame](https://github.com/vvakame))
 * [GoogleMaps](https://developers.google.com/maps/) (by [Esben Nepper](https://github.com/eNepper))
@@ -127,6 +128,7 @@ List of Definitions
 * [jquery.superLink](http://james.padolsey.com/demos/plugins/jQuery/superLink/superlink.jquery.js) (by [Blake Niemyjski](https://github.com/niemyjski))
 * [jQuery.timeago](http://timeago.yarp.com/) (by [François Guillot](http://fguillot.developpez.com/))
 * [jQuery.Timepicker](http://fgelinas.com/code/timepicker/) (by [Anwar Javed](https://github.com/anwarjaved))
+* [jQuery.Timer](http://jchavannes.com/jquery-timer/demo) (by [Joshua Strobl](https://github.com/JoshStrobl))
 * [jQuery.TinyCarousel](http://baijs.nl/tinycarousel/) (by [Christiaan Rakowski](https://github.com/csrakowski))
 * [jQuery.TinyScrollbar](http://baijs.nl/tinyscrollbar/) (by [Christiaan Rakowski](https://github.com/csrakowski))
 * [jQuery.Transit](http://ricostacruz.com/jquery.transit/) (by [MrBigDog2U](https://github.com/MrBigDog2U))
