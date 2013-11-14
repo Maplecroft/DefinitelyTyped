@@ -3655,24 +3655,28 @@ declare module L {
         }
     }
 
-    export class tileLayer {
-        
+    /**
+     * Instantiates a tile layer object given a URL template and optionally an options
+     * object.
+     */
+    export function tileLayer(urlTemplate: string, options?: TileLayerOptions)
+        : TileLayer;
+
+    /**
+     * Because the tileLayer function has members.
+     */
+    export module tileLayer {
         /**
-          * Instantiates a tile layer object given a URL template and optionally an options
-          * object.
+          * Instantiates a WMS tile layer object given a base URL of the WMS
+          * service and a WMS parameters/options object.
           */
-        function (urlTemplate: string, options?: TileLayerOptions): TileLayer;
+        function wms(baseUrl: string, options: WMSOptions): L.TileLayer.WMS;
 
         /**
-          * Instantiates a WMS tile layer object given a base URL of the WMS service and
-          * a WMS parameters/options object.
+          * Instantiates a Canvas tile layer object given an options object
+          * (optionally).
           */
-        static wms(baseUrl: string, options: WMSOptions): L.TileLayer.WMS;
-
-        /**
-          * Instantiates a Canvas tile layer object given an options object (optionally).
-          */
-        static canvas(options?: TileLayerOptions): L.TileLayer.Canvas;
+        function canvas(options?: TileLayerOptions): L.TileLayer.Canvas;
     }
 }
  
