@@ -244,6 +244,15 @@ interface Require {
 	**/
 	(modules: string[], ready: Function): void;
 
+  /**
+   * Same as above, but with an 'errback'.
+   * @param modules Required modules to load.
+   * @param ready function to be called with the loaded modules as arguments
+   * once loading is complete.
+   * @param errback an error callback.
+   */
+  (modules: string[], ready: Function, errback: Function): void;
+
 	/**
 	* Generate URLs from require module
 	* @param module Module to URL
