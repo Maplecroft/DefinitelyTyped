@@ -435,33 +435,32 @@ declare module L {
         }
     }
 
-    export class control {
+    /**
+     * Creates a control with the given options.
+     */
+    export function control(options: ControlOptions): Control;
 
-        /**
-          * Creates a control with the given options.
-          */
-        function (options?: ControlOptions): Control;
-
+    export module control {
         /**
           * Creates a zoom control.
           */
-        static zoom(options?: ZoomOptions): L.Control.Zoom;
+        function zoom(options?: ZoomOptions): L.Control.Zoom;
 
         /**
           * Creates an attribution control.
           */
-        static attribution(options?: AttributionOptions): L.Control.Attribution;
+        function attribution(options?: AttributionOptions): L.Control.Attribution;
 
         /**
             * Creates an attribution control with the given layers. Base layers will be
             * switched with radio buttons, while overlays will be switched with checkboxes.
             */
-        static layers(baseLayers?: any, overlays?: any, options?: LayersOptions): L.Control.Layers;
+        function layers(baseLayers?: any, overlays?: any, options?: LayersOptions): L.Control.Layers;
 
         /**
           * Creates an scale control with the given options.
           */
-        static scale(options?: ScaleOptions): L.Control.Scale;
+        function scale(options?: ScaleOptions): L.Control.Scale;
     }
 }
  
