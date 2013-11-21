@@ -580,13 +580,13 @@ declare module ng {
         headers?: any;
 
         cache?: any;
-        timeout?: number;
         withCredentials?: boolean;
 
-        // These accept multiple types, so let's defile them as any
+        // These accept multiple types, so let's define them as any
         data?: any;
         transformRequest?: any;
         transformResponse?: any;
+        timeout?: any; // number | promise
     }
 
     interface IHttpPromiseCallback<T> {
@@ -816,5 +816,4 @@ declare module ng {
         }
 
     }
-
 }

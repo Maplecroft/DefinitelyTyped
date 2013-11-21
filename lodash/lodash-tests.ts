@@ -316,17 +316,17 @@ result = <number[]>_.filter([1, 2, 3, 4, 5, 6], function(num) { return num % 2 =
 result = <IFoodCombined[]>_.filter(foodsCombined, 'organic');
 result = <IFoodCombined[]>_.filter(foodsCombined, { 'type': 'fruit' });
 
-	result = <number[]>_([1, 2, 3, 4, 5, 6]).filter(function(num) { return num % 2 == 0; });
-	result = <IFoodCombined[]>_(foodsCombined).filter('organic');
-	result = <IFoodCombined[]>_(foodsCombined).filter({ 'type': 'fruit' });
+	result = <number[]>_([1, 2, 3, 4, 5, 6]).filter(function(num) { return num % 2 == 0; }).value();
+	result = <IFoodCombined[]>_(foodsCombined).filter('organic').value();
+	result = <IFoodCombined[]>_(foodsCombined).filter({ 'type': 'fruit' }).value();
 
 	result = <number[]>_.select([1, 2, 3, 4, 5, 6], function(num) { return num % 2 == 0; });
 	result = <IFoodCombined[]>_.select(foodsCombined, 'organic');
 	result = <IFoodCombined[]>_.select(foodsCombined, { 'type': 'fruit' });
 
-		result = <number[]>_([1, 2, 3, 4, 5, 6]).select(function(num) { return num % 2 == 0; });
-		result = <IFoodCombined[]>_(foodsCombined).select('organic');
-		result = <IFoodCombined[]>_(foodsCombined).select({ 'type': 'fruit' });
+		result = <number[]>_([1, 2, 3, 4, 5, 6]).select(function(num) { return num % 2 == 0; }).value();
+		result = <IFoodCombined[]>_(foodsCombined).select('organic').value();
+		result = <IFoodCombined[]>_(foodsCombined).select({ 'type': 'fruit' }).value();
 
 result = <number>_.find([1, 2, 3, 4], function(num) {
   return num % 2 == 0;
@@ -395,9 +395,17 @@ result = <number[]>_.map([1, 2, 3], function(num) { return num * 3; });
 result = <number[]>_.map({ 'one': 1, 'two': 2, 'three': 3 }, function(num) { return num * 3; });
 result = <IStoogesAge[]>_.map(stoogesAges, 'name');
 
+	result = <number[]>_([1, 2, 3]).map(function(num) { return num * 3; }).value();
+	result = <number[]>_({ 'one': 1, 'two': 2, 'three': 3 }).map(function(num) { return num * 3; }).value();
+	result = <IStoogesAge[]>_(stoogesAges).map('name').value();
+
 result = <number[]>_.collect([1, 2, 3], function(num) { return num * 3; });
 result = <number[]>_.collect({ 'one': 1, 'two': 2, 'three': 3 }, function(num) { return num * 3; });
 result = <IStoogesAge[]>_.collect(stoogesAges, 'name');
+
+	result = <number[]>_([1, 2, 3]).collect(function(num) { return num * 3; }).value();
+	result = <number[]>_({ 'one': 1, 'two': 2, 'three': 3 }).collect(function(num) { return num * 3; }).value();
+	result = <IStoogesAge[]>_(stoogesAges).collect('name').value();
 
 result = <number>_.max([4, 2, 8, 6]);
 result = <IStoogesAge>_.max(stoogesAges, function(stooge) { return stooge.age; });

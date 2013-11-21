@@ -88,21 +88,21 @@ declare module D3 {
         * @param arr Array to search
         * @param map Accsessor function
         */
-        min<T>(arr: T[], map?: (v: T) => number): number;
+        min<T, U>(arr: T[], map?: (v: T) => U): U;
         /**
         * Find the maximum value in an array
         *
         * @param arr Array to search
         * @param map Accsessor function
         */
-        max<T>(arr: T[], map?: (v: T) => number): number;
+        max<T, U>(arr: T[], map?: (v: T) => U): U;
         /**
         * Find the minimum and maximum value in an array
         *
         * @param arr Array to search
         * @param map Accsessor function
         */
-        extent<T>(arr: T[], map?: (v: T) => number): number[];
+        extent<T, U>(arr: T[], map?: (v: T) => U): U[];
         /**
         * Compute the sum of an array of numbers
         *
@@ -714,6 +714,7 @@ declare module D3 {
         data: {
             (values: (data: any, index?: number) => any[], key?: (data: any, index?: number) => string): UpdateSelection;
             (values: any[], key?: (data: any, index?: number) => string): UpdateSelection;
+            (): any[];
         };
 
         datum: {
@@ -943,7 +944,18 @@ declare module D3 {
                 iso: TimeFormat;
             };
 
-            scale(): Scale.TimeScale;
+            scale: {
+                /**
+                * Constructs a new time scale with the default domain and range;
+                * the ticks and tick format are configured for local time.
+                */
+                (): Scale.TimeScale;
+                /**
+                * Constructs a new time scale with the default domain and range;
+                * the ticks and tick format are configured for UTC time.
+                */
+                utc(): Scale.TimeScale;
+            };
         }
 
         export interface Range {
@@ -1399,7 +1411,7 @@ declare module D3 {
             */
             r: number;
             /**
-            * the greeb color channel.
+            * the green color channel.
             */
             g: number;
             /**
@@ -1414,6 +1426,18 @@ declare module D3 {
 
         export interface HSLColor extends Color{
             /**
+            * hue
+            */
+            h: number;
+            /**
+            * saturation
+            */
+            s: number;
+            /**
+            * lightness
+            */
+            l: number;
+            /**
             * convert from HSL to RGB.
             */
             rgb(): RGBColor;
@@ -1421,12 +1445,36 @@ declare module D3 {
 
         export interface LABColor extends Color{
             /**
+            * lightness
+            */
+            l: number;
+            /**
+            * a-dimension
+            */
+            a: number;
+            /**
+            * b-dimension
+            */
+            b: number;
+            /**
             * convert from LAB to RGB.
             */
             rgb(): RGBColor;
         }
 
         export interface HCLColor extends Color{
+            /**
+            * hue
+            */
+            h: number;
+            /**
+            * chroma
+            */
+            c: number;
+            /**
+            * luminance
+            */
+            l: number;
             /**
             * convert from HCL to RGB.
             */
@@ -2437,8 +2485,10 @@ declare module D3 {
             clamp(clamp: boolean): QuantitiveScale;
             /**
             * extend the scale domain to nice round numbers.
+            * 
+            * @param count Optional number of ticks to exactly fit the domain
             */
-            nice(): QuantitiveScale;
+            nice(count?: number): QuantitiveScale;
             /**
             * get representative values from the input domain.
             *
@@ -2631,9 +2681,11 @@ declare module D3 {
 
         export interface Zoom {
             /**
-            * Execute zoom method
+            * Applies the zoom behavior to the specified selection,
+            * registering the necessary event listeners to support
+            * panning and zooming.
             */
-            (): any;
+            (selection: Selection): void;
 
             /**
             * Registers a listener to receive events

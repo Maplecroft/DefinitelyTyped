@@ -494,7 +494,7 @@ declare module _ {
 		* @param shallow If true then only flatten one level, optional, default = false.
 		* @return `array` flattened.
 		**/
-		flatten<T>(array: List<any>, isShallow?: boolean): T[]
+		flatten<T>(array: List<any>, isShallow?: boolean): T[];
 
 		flatten<T>(
 			array: List<any>,
@@ -1413,42 +1413,42 @@ declare module _ {
 		**/
 		filter<T>(
 			callback: ListIterator<T, boolean>,
-			thisArg?: any): T[];
+			thisArg?: any): LoDashArrayWrapper<T>;
 
 		/**
 		* @see _.filter
 		* @param pluckValue _.pluck style callback
 		**/
 		filter<T>(
-			pluckValue: string): T[];
+			pluckValue: string): LoDashArrayWrapper<T>;
 
 		/**
 		* @see _.filter
 		* @param pluckValue _.pluck style callback
 		**/
 		filter<W, T extends W>(
-			whereValue: W): T[];
+			whereValue: W): LoDashArrayWrapper<T>;
 
 			/**
 			* @see _.filter
 			**/
 			select<T>(
 				callback: ListIterator<T, boolean>,
-				thisArg?: any): T[];
+				thisArg?: any): LoDashArrayWrapper<T>;
 
 			/**
 			* @see _.filter
 			* @param pluckValue _.pluck style callback
 			**/
 			select<T>(
-				pluckValue: string): T[];
+				pluckValue: string): LoDashArrayWrapper<T>;
 
 			/**
 			* @see _.filter
 			* @param pluckValue _.pluck style callback
 			**/
 			select<W, T extends W>(
-				whereValue: W): T[];
+				whereValue: W): LoDashArrayWrapper<T>;
 	}
 
 	//_.find
@@ -1911,6 +1911,51 @@ declare module _ {
 			collect<T, TResult>(
 				collection: List<T>,
 				pluckValue: string): TResult[];
+	}
+
+	interface LoDashArrayWrapper<T> {
+		/**
+		* @see _.map
+		**/
+		map<T, TResult>(
+			callback: ListIterator<T, TResult>,
+			thisArg?: any): LoDashArrayWrapper<T>;
+
+		/**
+		* @see _.map
+		* @param pluckValue _.pluck style callback
+		**/
+		map<T, TResult>(
+			pluckValue: string): LoDashArrayWrapper<T>;
+
+			/**
+			* @see _.map
+			**/
+			collect<T, TResult>(
+				callback: ListIterator<T, TResult>,
+				thisArg?: any): LoDashArrayWrapper<T>;
+
+			/**
+			* @see _.map
+			**/
+			collect<T, TResult>(
+				pluckValue: string): LoDashArrayWrapper<T>;
+	}
+
+	interface LoDashObjectWrapper<T> {
+		/**
+		* @see _.map
+		**/
+		map<T extends {}, TResult>(
+			callback: ObjectIterator<T, TResult>,
+			thisArg?: any): LoDashObjectWrapper<T>;
+
+			/**
+			* @see _.map
+			**/
+			collect<T extends {}, TResult>(
+				callback: ObjectIterator<T, TResult>,
+				thisArg?: any): LoDashObjectWrapper<T>;
 	}
 
 	//_.max
@@ -3156,12 +3201,12 @@ declare module _ {
 		/**
 		* @see _.functions
 		**/
-		functions(): _.LoDashArrayWrapper<string>
+		functions(): _.LoDashArrayWrapper<string>;
 
 			/**
 			* @see _.functions
 			**/
-			methods(): _.LoDashArrayWrapper<string>
+			methods(): _.LoDashArrayWrapper<string>;
 	}
 
 	//_.has

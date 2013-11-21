@@ -48,6 +48,7 @@ List of Definitions
 * [Chrome App](http://developer.chrome.com/apps/) (by [Adam Lay](https://github.com/AdamLay))
 * [CodeMirror](http://codemirror.net) (by [François de Campredon](https://github.com/fdecampredon))
 * [Commander](http://github.com/visionmedia/commander.js) (by [Marcelo Dezem](https://github.com/mdezem))
+* [Couchbase / Couchnode](https://github.com/couchbase/couchnode) (by [Basarat Ali Syed](https://github.com/basarat))
 * [Crossfilter](https://github.com/square/crossfilter) (by [Schmulik Raskin](https://github.com/schmuli))
 * [d3.js](http://d3js.org/) (from TypeScript samples)
 * [dhtmlxGantt](http://dhtmlx.com/docs/products/dhtmlxGantt) (by [Maksim Kozhukh](http://github.com/mkozhukh))
@@ -59,6 +60,7 @@ List of Definitions
 * [ember.js](http://emberjs.com/) (by [Boris Yankov](https://github.com/borisyankov))
 * [EpicEditor](http://epiceditor.com/) (by [Boris Yankov](https://github.com/borisyankov))
 * [expect.js](https://github.com/LearnBoost/expect.js) (by [Teppei Sato](https://github.com/teppeis))
+* [expectations](https://github.com/spmason/expectations) (by [vvakame](https://github.com/vvakame))
 * [Express](http://expressjs.com/) (by [Boris Yankov](https://github.com/borisyankov))
 * [Ext JS](http://www.sencha.com/products/extjs/) (by [Brian Kotek](https://github.com/brian428))
 * [Fabric.js](http://fabricjs.com/) (by [Oliver Klemencic](https://github.com/oklemencic/))
@@ -241,12 +243,4 @@ List of Definitions
 
 Requested Definitions
 ---------------------
-* [jQuery ScrollTo](https://github.com/balupton/jquery-scrollto)
-* [dc.js](https://github.com/NickQiZhu/dc.js)
-* [google.visualizations](https://developers.google.com/chart/)
-* [Prelude.ls](http://gkz.github.com/prelude-ls/)
-* [MooTools](http://mootools.net/)
-* [java](https://github.com/nearinfinity/node-java)
-* [SVG.js](http://www.svgjs.com/)
-
-In addition you can find the [updated open requests that you can contribute here](https://github.com/borisyankov/DefinitelyTyped/issues?labels=request&page=1&state=open)
+Here is an updated list of [definitions people have requested](https://github.com/borisyankov/DefinitelyTyped/issues?labels=Definition%3ARequest)
