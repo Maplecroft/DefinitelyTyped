@@ -385,7 +385,7 @@ declare module L {
 
         }
 
-        export class Layers extends L.Control implements IEventPowered<Layers> {
+        export class Layers extends L.Control {
 
             /**
               * Creates an attribution control with the given layers. Base layers will be
@@ -407,22 +407,6 @@ declare module L {
               * Remove the given layer from the control.
               */
             removeLayer(layer: ILayer): Layers;
-
-            ////////////////
-            ////////////////
-            addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): Layers;
-            hasEventListeners(type: string): boolean;
-            fireEvent(type: string, data?: any): Layers;
-            on(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            once(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            off(type: string, fn?: (e: LeafletEvent) => void, context?: any): Layers;
-            fire(type: string, data?: any): Layers; addEventListener(eventMap: any, context?: any): Layers;
-            removeEventListener(eventMap?: any, context?: any): Layers;
-            clearAllEventListeners(): Layers
-            on(eventMap: any, context?: any): Layers;
-            off(eventMap?: any, context?: any): Layers;
         }
 
         export class Scale extends L.Control {
