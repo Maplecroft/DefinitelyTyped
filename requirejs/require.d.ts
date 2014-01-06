@@ -245,6 +245,13 @@ interface Require {
 	(modules: string[], ready: Function): void;
 
 	/**
+	* @see Require()
+	* @param ready Called when required modules are ready.
+  * @param errback Called when loading modules fails.
+	**/
+	(modules: string[], ready: Function, errback: Function): void;
+
+	/**
 	* Generate URLs from require module
 	* @param module Module to URL
 	* @return URL string
