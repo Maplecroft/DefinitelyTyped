@@ -385,7 +385,9 @@ declare module L {
 
         }
 
-        export class Layers extends L.Control implements IEventPowered<Layers> {
+        // NOTE: Layers does not implement L.IEventPowered<>: it does not
+        // use the mixin L.Mixin.Events.
+        export class Layers extends L.Control {
 
             /**
               * Creates an attribution control with the given layers. Base layers will be
@@ -407,22 +409,6 @@ declare module L {
               * Remove the given layer from the control.
               */
             removeLayer(layer: ILayer): Layers;
-
-            ////////////////
-            ////////////////
-            addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): Layers;
-            hasEventListeners(type: string): boolean;
-            fireEvent(type: string, data?: any): Layers;
-            on(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            once(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            off(type: string, fn?: (e: LeafletEvent) => void, context?: any): Layers;
-            fire(type: string, data?: any): Layers; addEventListener(eventMap: any, context?: any): Layers;
-            removeEventListener(eventMap?: any, context?: any): Layers;
-            clearAllEventListeners(): Layers;
-            on(eventMap: any, context?: any): Layers;
-            off(eventMap?: any, context?: any): Layers;
         }
 
         export class Scale extends L.Control {
@@ -435,33 +421,32 @@ declare module L {
         }
     }
 
-    export class control {
+    /**
+     * Creates a control with the given options.
+     */
+    export function control(options: ControlOptions): Control;
 
-        /**
-          * Creates a control with the given options.
-          */
-        function (options?: ControlOptions): Control;
-
+    export module control {
         /**
           * Creates a zoom control.
           */
-        static zoom(options?: ZoomOptions): L.Control.Zoom;
+        function zoom(options?: ZoomOptions): L.Control.Zoom;
 
         /**
           * Creates an attribution control.
           */
-        static attribution(options?: AttributionOptions): L.Control.Attribution;
+        function attribution(options?: AttributionOptions): L.Control.Attribution;
 
         /**
             * Creates an attribution control with the given layers. Base layers will be
             * switched with radio buttons, while overlays will be switched with checkboxes.
             */
-        static layers(baseLayers?: any, overlays?: any, options?: LayersOptions): L.Control.Layers;
+        function layers(baseLayers?: any, overlays?: any, options?: LayersOptions): L.Control.Layers;
 
         /**
           * Creates an scale control with the given options.
           */
-        static scale(options?: ScaleOptions): L.Control.Scale;
+        function scale(options?: ScaleOptions): L.Control.Scale;
     }
 }
  
@@ -760,7 +745,7 @@ declare module L {
         fire(type: string, data?: any): Draggable;
         addEventListener(eventMap: any, context?: any): Draggable;
         removeEventListener(eventMap?: any, context?: any): Draggable;
-        clearAllEventListeners(): Draggable;
+        clearAllEventListeners(): Draggable
         on(eventMap: any, context?: any): Draggable;
         off(eventMap?: any, context?: any): Draggable;
     }
@@ -837,7 +822,7 @@ declare module L {
         fire(type: string, data?: any): FeatureGroup;
         addEventListener(eventMap: any, context?: any): FeatureGroup;
         removeEventListener(eventMap?: any, context?: any): FeatureGroup;
-        clearAllEventListeners(): FeatureGroup;
+        clearAllEventListeners(): FeatureGroup
         on(eventMap: any, context?: any): FeatureGroup;
         off(eventMap?: any, context?: any): FeatureGroup;
     }
@@ -957,7 +942,7 @@ declare module L {
 
         /**
           * Function that will be used for converting GeoJSON coordinates to LatLng points
-          * (if not specified, coords will be assumed to be WGS84 ï¿½ standard[longitude, latitude]
+          * (if not specified, coords will be assumed to be WGS84 — standard[longitude, latitude]
           * values in degrees).
           */
         coordsToLatLng?: (coords: any[]) => LatLng[];
@@ -1412,7 +1397,7 @@ declare module L {
           *
           * Value: Math.PI / 180.
           */
-        static DEG_TO_RAD: number;		
+        static DEG_TO_RAD: number;    
 
         /**
           * A multiplier for converting radians into degrees.
@@ -2299,7 +2284,7 @@ declare module L {
         off(type: string, fn?: (e: LeafletEvent) => void, context?: any): Map;
         fire(type: string, data?: any): Map;addEventListener(eventMap: any, context?: any): Map;
         removeEventListener(eventMap?: any, context?: any): Map;
-        clearAllEventListeners(): Map;
+        clearAllEventListeners(): Map
         on(eventMap: any, context?: any): Map;
         off(eventMap?: any, context?: any): Map;
     }
@@ -2704,9 +2689,9 @@ declare module L {
         once(type: string, fn: (e: LeafletEvent) => void, context?: any): Marker;
         off(type: string, fn?: (e: LeafletEvent) => void, context?: any): Marker;
         fire(type: string, data?: any): Marker;
-        addEventListener(eventMap: any, context?: any): Marker;
+    addEventListener(eventMap: any, context?: any): Marker;
         removeEventListener(eventMap?: any, context?: any): Marker;
-        clearAllEventListeners(): Marker;
+        clearAllEventListeners(): Marker
         on(eventMap: any, context?: any): Marker;
         off(eventMap?: any, context?: any): Marker;
     }
@@ -3012,7 +2997,7 @@ declare module L {
         fire(type: string, data?: any): Path;
         addEventListener(eventMap: any, context?: any): Path;
         removeEventListener(eventMap?: any, context?: any): Path;
-        clearAllEventListeners(): Path;
+        clearAllEventListeners(): Path
         on(eventMap: any, context?: any): Path;
         off(eventMap?: any, context?: any): Path;
     }
@@ -3437,7 +3422,7 @@ declare module L {
         fire(type: string, data?: any): PosAnimation;
         addEventListener(eventMap: any, context?: any): PosAnimation;
         removeEventListener(eventMap?: any, context?: any): PosAnimation;
-        clearAllEventListeners(): PosAnimation;
+        clearAllEventListeners(): PosAnimation
         on(eventMap: any, context?: any): PosAnimation;
         off(eventMap?: any, context?: any): PosAnimation;
     }
@@ -3611,7 +3596,7 @@ declare module L {
         fire(type: string, data?: any): TileLayer;
         addEventListener(eventMap: any, context?: any): TileLayer;
         removeEventListener(eventMap?: any, context?: any): TileLayer;
-        clearAllEventListeners(): TileLayer;
+        clearAllEventListeners(): TileLayer
         on(eventMap: any, context?: any): TileLayer;
         off(eventMap?: any, context?: any): TileLayer;
     }
@@ -3659,17 +3644,21 @@ declare module L {
      * Instantiates a tile layer object given a URL template and optionally an options
      * object.
      */
-    function tileLayer(urlTemplate: string, options?: TileLayerOptions): TileLayer;
+    export function tileLayer(urlTemplate: string, options?: TileLayerOptions): TileLayer;
 
+    /**
+     * Because the tileLayer function has members.
+     */
     export module tileLayer {
         /**
-          * Instantiates a WMS tile layer object given a base URL of the WMS service and
-          * a WMS parameters/options object.
+          * Instantiates a WMS tile layer object given a base URL of the WMS
+          * service and a WMS parameters/options object.
           */
         function wms(baseUrl: string, options: WMSOptions): L.TileLayer.WMS;
 
         /**
-          * Instantiates a Canvas tile layer object given an options object (optionally).
+          * Instantiates a Canvas tile layer object given an options object
+          * (optionally).
           */
         function canvas(options?: TileLayerOptions): L.TileLayer.Canvas;
     }
